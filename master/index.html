@@ -8,7 +8,7 @@
     h5,
     h6 {
       font-family: 'Montserrat', sans-serif;
-    }</style><body><div class="container mb-5" style="width: 960px"><h1 class="mt-5"><strong>inkmap</strong><br/><span class="mt-2" style="font-size: 20px">a library for generating high-quality, printable maps.</span></h1><div class="mt-5" id="example-01"><p>Give <strong>inkmap</strong> a JSON spec and it will use it to generate a PNG image in the background.</p><p>Use the <code>print</code> API to begin printing a spec. This function returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a> which resolves to a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">Blob</a> containing the map image.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-01-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-01-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-01-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="true"></print-spec><custom-button class="col-3">Generate!</custom-button></div></div><div class="tab-pane example-01-source"><pre class="rounded small"><code class="js">import { downloadBlob, print } from &#39;inkmap&#39;;
+    }</style><body><div class="container mb-5" style="width: 960px"><h1 class="mt-5"><strong>inkmap</strong><br/><span class="mt-2" style="font-size: 20px">a library for generating high-quality, printable maps.</span></h1><div class="mt-5" id="example-01"><p>Give <strong>inkmap</strong> a JSON spec and it will use it to generate a PNG image in the background.</p><p>Use the <code>print</code> API to begin printing a spec. This function returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a> which resolves to a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">Blob</a> containing the map image.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-01-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-01-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-01-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="true"></print-spec><custom-button class="col-3">Generate!</custom-button></div></div><div class="tab-pane example-01-source"><pre class="rounded small"><code class="js">import { downloadBlob, print } from &#39;@camptocamp/inkmap&#39;;
 
 const root = document.getElementById(&#39;example-01&#39;);
 const btn = /** @type {CustomButton} */ root.querySelector(&#39;custom-button&#39;);
@@ -27,7 +27,7 @@ btn.addEventListener(&#39;click&#39;, async () =&gt; {
 
   downloadBlob(blob, &#39;inkmap.png&#39;);
 });
-</code></pre></div></div></div><div class="mt-5" id="example-02"><h2>Showing progress</h2><p><strong>inkmap</strong> also enables finer monitoring by making the job status observable.</p><p>Use the <code>enqueuePrint</code> API to start a print job asynchronously. This function returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a> which resolves to a job id. You can then feed the job id to <code>getJobStatus</code> which will return an observable that you can <code>subscribe</code> to, emitting updates on the given print job status.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-02-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-02-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-02-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="false"></print-spec><div class="col-3"><custom-button>Generate!</custom-button><custom-progress></custom-progress></div></div></div><div class="tab-pane example-02-source"><pre class="rounded small"><code class="js">import { downloadBlob, getJobStatus, queuePrint } from &#39;inkmap&#39;;
+</code></pre></div></div></div><div class="mt-5" id="example-02"><h2>Showing progress</h2><p><strong>inkmap</strong> also enables finer monitoring by making the job status observable.</p><p>Use the <code>enqueuePrint</code> API to start a print job asynchronously. This function returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a> which resolves to a job id. You can then feed the job id to <code>getJobStatus</code> which will return an observable that you can <code>subscribe</code> to, emitting updates on the given print job status.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-02-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-02-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-02-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="false"></print-spec><div class="col-3"><custom-button>Generate!</custom-button><custom-progress></custom-progress></div></div></div><div class="tab-pane example-02-source"><pre class="rounded small"><code class="js">import { downloadBlob, getJobStatus, queuePrint } from &#39;@camptocamp/inkmap&#39;;
 
 const root = document.getElementById(&#39;example-02&#39;);
 const btn = /** @type {CustomButton} */ root.querySelector(&#39;custom-button&#39;);
@@ -59,7 +59,12 @@ btn.addEventListener(&#39;click&#39;, async () =&gt; {
     }
   });
 });
-</code></pre></div></div></div><div class="mt-5" id="example-03"><h2>Canceling a job</h2><p><strong>inkmap</strong> also enables job cancellation.</p><p>Use <code>cancelJob</code> after having started a job with <code>enqueuePrint</code>.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-03-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-03-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-03-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="false"></print-spec><div class="col-3"><custom-button>Generate!</custom-button><custom-progress></custom-progress><button role="button" class="cancel-btn btn btn-danger btn-block mt-2">Cancel</button></div></div></div><div class="tab-pane example-03-source"><pre class="rounded small"><code class="js">import { cancelJob, downloadBlob, getJobStatus, queuePrint } from &#39;inkmap&#39;;
+</code></pre></div></div></div><div class="mt-5" id="example-03"><h2>Canceling a job</h2><p><strong>inkmap</strong> also enables job cancellation.</p><p>Use <code>cancelJob</code> after having started a job with <code>enqueuePrint</code>.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-03-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-03-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-03-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="false"></print-spec><div class="col-3"><custom-button>Generate!</custom-button><custom-progress></custom-progress><button role="button" class="cancel-btn btn btn-danger btn-block mt-2">Cancel</button></div></div></div><div class="tab-pane example-03-source"><pre class="rounded small"><code class="js">import {
+  cancelJob,
+  downloadBlob,
+  getJobStatus,
+  queuePrint,
+} from &#39;@camptocamp/inkmap&#39;;
 
 const root = document.getElementById(&#39;example-03&#39;);
 const btn = /** @type {CustomButton} */ root.querySelector(&#39;custom-button&#39;);
@@ -103,7 +108,12 @@ btnCancel.addEventListener(&#39;click&#39;, async () =&gt; {
   // cancel job based on job id
   cancelJob(jobId);
 });
-</code></pre></div></div></div><div class="mt-5" id="example-04"><h2>Monitoring multiple jobs</h2><p>Multiple jobs can be monitored at once through a long lived observable.</p><p>Use <code>getJobsStatus</code> to receive a long-lived observable that you can <code>subscribe</code> to and which will regularly give you status updates on all running jobs.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-04-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-04-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-04-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="false"></print-spec><div class="col-3"><custom-button>Add to the queue</custom-button><progress-bars></progress-bars></div></div></div><div class="tab-pane example-04-source"><pre class="rounded small"><code class="js">import { getJobsStatus, queuePrint, downloadBlob, getJobStatus } from &#39;inkmap&#39;;
+</code></pre></div></div></div><div class="mt-5" id="example-04"><h2>Monitoring multiple jobs</h2><p>Multiple jobs can be monitored at once through a long lived observable.</p><p>Use <code>getJobsStatus</code> to receive a long-lived observable that you can <code>subscribe</code> to and which will regularly give you status updates on all running jobs.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-04-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-04-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-04-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="false"></print-spec><div class="col-3"><custom-button>Add to the queue</custom-button><progress-bars></progress-bars></div></div></div><div class="tab-pane example-04-source"><pre class="rounded small"><code class="js">import {
+  getJobsStatus,
+  queuePrint,
+  downloadBlob,
+  getJobStatus,
+} from &#39;@camptocamp/inkmap&#39;;
 
 const root = document.getElementById(&#39;example-04&#39;);
 const btn = /** @type {CustomButton} */ root.querySelector(&#39;custom-button&#39;);
@@ -130,8 +140,9 @@ btn.addEventListener(&#39;click&#39;, async () =&gt; {
     }
   });
 });
-</code></pre></div></div></div><div class="mt-5" id="example-05"><h2>Printing to PDF</h2><p><strong>inkmap</strong> jobs give back a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">Blob</a> which can be inserted into a PDF. This is for example supported by <a href="http://raw.githack.com/MrRio/jsPDF/master/docs/module-addImage.html#~addImage">jsPDF</a>, as showcased here.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-05-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-05-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-05-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="false"></print-spec><custom-button class="col-3">Generate!</custom-button></div></div><div class="tab-pane example-05-source"><pre class="rounded small"><code class="js">import { print, getAttributionsText } from &#39;inkmap&#39;;
+</code></pre></div></div></div><div class="mt-5" id="example-05"><h2>Printing to PDF</h2><p><strong>inkmap</strong> jobs give back a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">Blob</a> which can be inserted into a PDF. This is for example supported by <a href="http://raw.githack.com/MrRio/jsPDF/master/docs/module-addImage.html#~addImage">jsPDF</a>, as showcased here.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-05-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-05-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-05-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="false"></print-spec><custom-button class="col-3">Generate!</custom-button></div></div><div class="tab-pane example-05-source"><pre class="rounded small"><code class="js">import { print, getAttributionsText, getNorthArrow } from &#39;@camptocamp/inkmap&#39;;
 import { jsPDF } from &#39;jspdf&#39;;
+import { getScaleBar } from &#39;../../src/main&#39;;
 
 const root = document.getElementById(&#39;example-05&#39;);
 const btn = /** @type {CustomButton} */ root.querySelector(&#39;custom-button&#39;);
@@ -150,7 +161,9 @@ btn.addEventListener(&#39;click&#39;, async () =&gt; {
   const specValue = {
     ...spec.value,
     size: [mapWidth, mapHeight, &#39;mm&#39;],
-    attributions: null, // do not print the attributions on the map
+    attributions: null, // do not print widgets on the map
+    northArrow: false,
+    scaleBar: false,
   };
 
   // create a job, get a promise that resolves when the job is finished
@@ -162,7 +175,7 @@ btn.addEventListener(&#39;click&#39;, async () =&gt; {
   const doc = new jsPDF({
     orientation: &#39;landscape&#39;,
     unit: &#39;mm&#39;,
-    format: &#39;a4&#39;,
+    format: &#39;a4&#39;, // 210 by 297mm
     putOnlyUsedFonts: true,
   });
 
@@ -173,7 +186,31 @@ btn.addEventListener(&#39;click&#39;, async () =&gt; {
   // add a title
   doc.setFont(&#39;times&#39;, &#39;bold&#39;);
   doc.setFontSize(20);
-  doc.text(&#39;A fantastic map.&#39;, 148.5, 20, null, null, &#39;center&#39;);
+  doc.text(&#39;A fantastic map.&#39;, 148.5, 13, null, null, &#39;center&#39;);
+
+  // add north arrow
+  const arrow = getNorthArrow(specValue, [16, &#39;mm&#39;]);
+  const arrowSizeMm = arrow.getRealWorldDimensions(&#39;mm&#39;);
+  doc.addImage(
+    arrow.getImage(),
+    &#39;PNG&#39;,
+    140,
+    21,
+    arrowSizeMm[0],
+    arrowSizeMm[1]
+  );
+
+  // add scalebar next to the north arrow
+  const scalebar = getScaleBar(specValue, [30, &#39;mm&#39;]);
+  const scalebarSizeMm = scalebar.getRealWorldDimensions(&#39;mm&#39;);
+  doc.addImage(
+    scalebar.getImage(),
+    &#39;PNG&#39;,
+    287 - scalebarSizeMm[0],
+    37 - scalebarSizeMm[1],
+    scalebarSizeMm[0],
+    scalebarSizeMm[1]
+  );
 
   // add a creation date
   doc.setFont(&#39;courier&#39;, &#39;normal&#39;);
@@ -195,7 +232,7 @@ btn.addEventListener(&#39;click&#39;, async () =&gt; {
   // download the result
   doc.save(&#39;inkmap.pdf&#39;);
 });
-</code></pre></div></div></div><div class="mt-5" id="example-06"><h2>Using projections</h2><p><strong>inkmap</strong> supports a large amount of projections for rendering the map. Projections can be defined and registered using <code>registerProjection</code>. If the map projection is not registered, <strong>inkmap</strong> will look it up on <a href="https://epsg.io/">epsg.io</a>.</p><p>Under the hood, <strong>inkmap</strong> uses <a href="http://proj4js.org/">proj4js</a>.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-06-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-06-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-06-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="false" select="North pole, arctic projection (WMS)"></print-spec><custom-button class="col-3">Generate!</custom-button></div></div><div class="tab-pane example-06-source"><pre class="rounded small"><code class="js">import { downloadBlob, print, registerProjection } from &#39;inkmap&#39;;
+</code></pre></div></div></div><div class="mt-5" id="example-06"><h2>Using projections</h2><p><strong>inkmap</strong> supports a large amount of projections for rendering the map. Projections can be defined and registered using <code>registerProjection</code>. If the map projection is not registered, <strong>inkmap</strong> will look it up on <a href="https://epsg.io/">epsg.io</a>.</p><p>Under the hood, <strong>inkmap</strong> uses <a href="http://proj4js.org/">proj4js</a>.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-06-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-06-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-06-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="false" select="North pole, arctic projection (WMS)"></print-spec><custom-button class="col-3">Generate!</custom-button></div></div><div class="tab-pane example-06-source"><pre class="rounded small"><code class="js">import { downloadBlob, print, registerProjection } from &#39;@camptocamp/inkmap&#39;;
 
 const root = document.getElementById(&#39;example-06&#39;);
 const btn = /** @type {CustomButton} */ root.querySelector(&#39;custom-button&#39;);
@@ -222,7 +259,7 @@ btn.addEventListener(&#39;click&#39;, async () =&gt; {
 
   downloadBlob(blob, &#39;inkmap.png&#39;);
 });
-</code></pre></div></div></div><div class="mt-5" id="example-07"><h2>Error handling</h2><p>When errors are encountered while loading data for one or several layers, <strong>inkmap</strong> includes a list of error objects with urls in the status updates.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-07-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-07-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-07-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="false" select="Spec with invalid sources"></print-spec><custom-button class="col-3">Generate!</custom-button></div></div><div class="tab-pane example-07-source"><pre class="rounded small"><code class="js">import { downloadBlob, getJobStatus, queuePrint } from &#39;inkmap&#39;;
+</code></pre></div></div></div><div class="mt-5" id="example-07"><h2>Error handling</h2><p>When errors are encountered while loading data for one or several layers, <strong>inkmap</strong> includes a list of error objects with urls in the status updates.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-07-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-07-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-07-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="false" select="Spec with invalid sources"></print-spec><custom-button class="col-3">Generate!</custom-button></div></div><div class="tab-pane example-07-source"><pre class="rounded small"><code class="js">import { downloadBlob, getJobStatus, queuePrint } from &#39;@camptocamp/inkmap&#39;;
 
 const root = document.getElementById(&#39;example-07&#39;);
 const btn = /** @type {CustomButton} */ root.querySelector(&#39;custom-button&#39;);
